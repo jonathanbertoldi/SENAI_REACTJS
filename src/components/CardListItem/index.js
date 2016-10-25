@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 class CardListItem extends Component {
 	render() {
+		const {descricao, feito} = this.props.tarefa;
 		return (
 			<li>
-				<input type="checkbox" />
-				Trazer o meu guarda chuva.
+				<input type="checkbox" checked={feito}/>
+				{descricao}
 			</li>
 		);
 	}

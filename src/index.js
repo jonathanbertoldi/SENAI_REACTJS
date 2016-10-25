@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+import App from './components/App';
+import NotFound from './components/NotFound'
+import Layout from './layouts/default'
 //import Teste from './Teste';
 
 import './index.css';
 
 ReactDOM.render(
-  <App />,
+  <Router history={browserHistory}>
+  	<Route path="/" component={Layout}>
+  		<IndexRoute component={App}/>
+  		<Route path="naoencontrei" component={NotFound} />
+  	</Route>
+  </Router>,
   document.getElementById('root')
 );
 
