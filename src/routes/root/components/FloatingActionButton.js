@@ -17,7 +17,6 @@ class FloatingActionButton extends Component {
     		backgroundPosition: "12px 12px",
     		borderRadius: "30px",
     		boxShadow: "3px 3px 10px #CCC"
-
 		}
 
 		return (
