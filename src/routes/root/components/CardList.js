@@ -12,8 +12,13 @@ class CardList extends Component {
 	}
 
 	render() {
+		const ulStyle = {
+			listStyle: "none",
+			padding: "0px"
+		}
+
 		return (
-			<ul>
+			<ul style={ulStyle}>
 				{this.renderTarefas()}
 			</ul>
 		);

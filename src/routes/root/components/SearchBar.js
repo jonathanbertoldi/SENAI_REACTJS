@@ -2,15 +2,10 @@ import React, {Component} from 'react';
 import Icon from './magnify.svg'
 
 class SearchBar extends Component {
-	state = {
-		mensagem: ""
-	}
 
 	handleInput() {
-		var newMsg = this.refs['search'].value;
-		this.setState({
-			mensagem: newMsg
-		});
+		var value = this.refs['search'].value;
+		this.props.filtrar(value);
 	}
 
 	render() {
@@ -27,8 +22,12 @@ class SearchBar extends Component {
 
 		return (
 			<div>
-				<input ref="search" type="search" onInput={this.handleInput.bind(this)} placeholder="Pesquisa" style={style}/>
-				<p>{this.state.mensagem}</p>
+				<input 
+					ref="search" 
+					type="search" 
+					onInput={this.handleInput.bind(this)} 
+					placeholder="Pesquisa" 
+					style={style} />
 			</div>
 		);
 	}

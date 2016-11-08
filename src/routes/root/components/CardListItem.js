@@ -6,7 +6,7 @@ class CardListItem extends Component {
 
 		return (
 			<li>
-				<input type="checkbox" />
+				<input type="checkbox" defaultChecked={item.feito} />
 				{item.descricao}
 			</li>
 		);

@@ -1,33 +1,51 @@
 import React, {Component} from 'react';
-import SearchBar from './components/SearchBar'
-import Card from './components/Card'
-import FloatingActionButton from './components/FloatingActionButton'
+import SearchBar from './components/SearchBar';
+import Card from './components/Card';
+import AddTodoList from './components/AddTodoList';
+
 
 class ToDoList extends Component {
 	
 	state = {
-		listas: []
+		listas: [],
+		filtro: ""
 	}
 
 	fetchListas() {
 		fetch("https://private-00cf6-reacttodo.apiary-mock.com/lista")
 			.then(response => response.json())
 			.then(json => {
-				console.log(json);
 				this.setState({
 					listas: json
 				});
 			});
 	}
 
-	handleClick() {
-		this.fetchListas();
-	}
-
 	renderCards() {
-		return this.state.listas.map(function(lista) {
+		var filtro = this.state.filtro;
+		var cards = this.state.listas;
+
+		if (filtro != '') {
+			cards = this.state.listas.filter(card => {
+				var titulo = card.titulo.toLowerCase();
+				return titulo.indexOf(filtro) != -1;
+			});
+		}
+
+		
+		return cards.map(function(lista) {
 			return <Card lista={lista} />
 		});
+	}
+
+	filtrar(valor) {
+		this.setState({
+			filtro: valor
+		});
+	}
+
+	componentDidMount() {
+		this.fetchListas();
 	}
 
 	render() {
@@ -40,14 +58,22 @@ class ToDoList extends Component {
 			layout: "inline-block"
 		}
 
+		var actions = (
+			<div>
+				<button>Oi</button>
+				<button>Tchau</button>
+			</div>
+		);
+
 		return (
 			<div style={pageWrapper}>
-				<SearchBar />
+				<SearchBar filtrar={this.filtrar.bind(this)} />
+				
 				<div style={cardsStyle}>
 					{this.renderCards()}
 				</div>
-				<button onClick={this.handleClick.bind(this)} >button</button>
-				<FloatingActionButton />
+				
+				<AddTodoList />
 			</div>
 		);
 	}
