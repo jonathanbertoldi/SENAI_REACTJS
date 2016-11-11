@@ -55,7 +55,9 @@ class ToDoList extends Component {
 		}
 
 		const cardsStyle = {
-			layout: "inline-block"
+			display: "flex",
+			justifyContent: "space-between",
+			flexWrap: "wrap"
 		}
 
 		var actions = (

@@ -7,8 +7,7 @@ class Card extends Component {
 			width: "230px",
 			backgroundColor: "white",
 			boxShadow: "3px 3px 10px #CCC",
-			float: "left",
-			margin: "20px 20px 0px 0px",
+			margin: "20px 0px 0px 0px",
 			padding: "20px"
 		}
 
